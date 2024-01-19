@@ -49,29 +49,10 @@ while Encendido:
                     item[7] += 3
                 elif (marcadorLocal < marcadorVisitante):
                     item[3] += 1
+                    item[7] += 3
                 elif (marcadorLocal == marcadorVisitante):
                     item[4] += 1
                     item[7] += 1                        
-        #     elif (vsVisitante.upper() in item):
-        #         item[5] += marcadorVisitante
-        #         item[6] += marcadorLocal
-        #         if (marcadorLocal > marcadorVisitante):
-        #             item[3] += 1
-        #             print("El equipo ganador ha sido: ", vsLocal)
-        #             os.system("pause")
-        #         elif (marcadorLocal < marcadorVisitante):
-        #             item[2] += 1
-        #             item[7] += 3
-        #             print("El equipo ganador ha sido: ", vsVisitante)
-                    
-        #             os.system("pause")
-        #         elif(marcadorVisitante == marcadorLocal):
-        #             item[4] += 1
-        #             item[7] += 1
-        #             print("Ha habido un empate entre los dos equipos")
-        # for i, item in enumerate(Equipos):
-            
-        
     elif(opcion == 3):
         pass
     elif(opcion == 4):
@@ -79,4 +60,3 @@ while Encendido:
     else:
         print("Escoja una opcion valida")
         os.system('pause')
-        $ nano ~/.gitconfig
