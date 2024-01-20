@@ -28,11 +28,11 @@ while Encendido:
         Equipos.append([nombreEquip, 0, 0, 0, 0, 0, 0, 0])     # registrar equipo con datos en 0
         if (len(Equipos) > 1):
             for i, item in enumerate(Equipos):
-                if (i >= 1):
-                    if (Equipos[i-1][0] == Equipos[i][0]):
+                for j in range (int(i+1), len(Equipos), 1):
+                    if(Equipos[i][0] == Equipos[j][0]):
                         os.system("cls")
                         print("Debe registrar dos equipos diferentes, el que ha escrito ya se encontraba creado")
-                        Equipos.pop(i)
+                        Equipos.pop(j)
                         os.system("pause")
     elif(opcion == 2):
         if (len(Equipos) < 2):
