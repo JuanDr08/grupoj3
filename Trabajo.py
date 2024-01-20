@@ -13,7 +13,7 @@ tabla = """
     +++++++++++++++++++++++++++++++++++++
 """
 
-opciones = "1- Registrar un equipo\n2- Registrar una fecha\n3- Tabla de posiciones\n4- Reporte"
+opciones = "1- Registrar un equipo\n2- Registrar una fecha\n3- Tabla de posiciones\n4- Reporte\n5- Salir"
 
 Encendido = True
 Equipos = []
@@ -167,6 +167,8 @@ while Encendido:
                     else:
                         print("E. El promedio de goles por partido es: ", totalGoles/totalPartidos )
                         os.system("pause")
+    elif (opcion == 5):
+        Encendido = False
     else:
         print("Escoja una opcion valida")
         os.system('pause')
