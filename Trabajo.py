@@ -21,37 +21,45 @@ while Encendido:
     os.system('cls')
     print(titulo)
     print(opciones)
-    opcion = int(input("-"))
+    opcion = int(input("-(Entero): "))
     if (opcion == 1):
         os.system("cls")
-        nombreEquip = str(input("Ingrese el nombre del equipo: "))             # pedir nombre
-        Equipos.append([nombreEquip.upper(), 0, 0, 0, 0, 0, 0, 0])     # registrar equipo con datos en 0
-        #  crear un doble for loop con condicion de que len(equipos) sea mayor a 1, y que si se cumple compare los dos equipos registrados uno con uno y 
-        #  el nombre es igual eliminarlo
-        #
-        #
+        nombreEquip = str(input("Ingrese el nombre del equipo: ")).upper()             # pedir nombre
+        Equipos.append([nombreEquip, 0, 0, 0, 0, 0, 0, 0])     # registrar equipo con datos en 0
+        if (len(Equipos) > 1):
+            for i, item in enumerate(Equipos):
+                if (i >= 1):
+                    if (Equipos[i-1][0] == Equipos[i][0]):
+                        os.system("cls")
+                        print("Debe registrar dos equipos diferentes, el segundo registrado sera eliminado")
+                        Equipos.pop(i)
+                        os.system("pause")
     elif(opcion == 2):
         if (len(Equipos) < 2):
-            print("No hay equipos registrados")
+            os.system("cls")
+            print("No hay suficientes equipos registrados")
             print("Debe haber registrado al menos dos equipos, porfavor registrelos en la opcion 1")
             os.system("pause")
         else:            
             os.system("cls")
             for i, item in enumerate(Equipos): # Disponibilidad
                 print("Equipos disponibles: ", item[0])
-            vsLocal = str(input("Ingrese el equipo que jugara de Local: "))             # Ingreso contrincantes
-            vsVisitante = str(input("Ingrese el equipo que jugara de visitante: "))     # Ingreso contrincantes
-            if (vsLocal.upper() == vsVisitante.upper()):
-                print("Registre dos equipos diferentes")
-                os.system("pause")
-            else:
-                os.system("cls")
-                marcadorLocal = int(input(f"Ingrese el marcador del equipo {vsLocal}: "))
-                marcadorVisitante = int(input(f"Ingrese el marcador del equipo {vsVisitante}: ")) 
+            vsLocal = str(input("Ingrese el equipo que jugara de Local: ")).upper()           # Ingreso contrincantes
+            vsVisitante = str(input("Ingrese el equipo que jugara de visitante: ")).upper()      # Ingreso contrincantes
+            localExist = False
+            visitanteExist = False
+            for item in Equipos:
+                if (vsLocal in item):
+                    localExist = True
+                elif (vsVisitante in item):
+                    visitanteExist = True
+            if ((localExist == True) and (visitanteExist == True) and (vsLocal != vsVisitante)):
+                marcadorLocal = int(input(f"Ingrese el marcador (Numeros) del equipo {vsLocal}: "))
+                marcadorVisitante = int(input(f"Ingrese el marcador (Numeros) del equipo {vsVisitante}: ")) 
                 if((marcadorLocal >= 0) and  (marcadorVisitante >= 0)):
-                    for i, item in enumerate(Equipos):                              
-                        if ((vsLocal.upper() in item) or (vsVisitante.upper() in item)):
-                            if (item[0] == vsLocal.upper()):
+                    for item in Equipos:                              
+                        if ((vsLocal in item) or (vsVisitante in item)):
+                            if (item[0] == vsLocal):
                                 item[1] += 1
                                 item[5] += marcadorLocal
                                 item[6] += marcadorVisitante
@@ -60,7 +68,7 @@ while Encendido:
                                     item[7] += 3
                                 elif (marcadorLocal < marcadorVisitante):
                                     item[3] += 1
-                            elif (item[0] == vsVisitante.upper()):
+                            elif (item[0] == vsVisitante):
                                 item[1] += 1
                                 item[6] += marcadorLocal
                                 item[5] += marcadorVisitante
@@ -69,12 +77,18 @@ while Encendido:
                                     item[7] += 3
                                 elif (marcadorLocal > marcadorVisitante):
                                     item[3] += 1
-                            elif (marcadorLocal == marcadorVisitante):
+                            if (marcadorLocal == marcadorVisitante):
                                 item[4] += 1
                                 item[7] += 1
                 else:
                     print("ingrese un valor correcto")
-                    os.system("pause")                       
+                    os.system("pause") 
+            elif(vsLocal == vsVisitante):
+                print("Registre dos equipos diferentes")
+                os.system("pause")  
+            else :
+                print("Uno de los equipos ingresados no ha sido registrado, o ninguno lo ha sido, profavor vaya a la opcion 1\ny registrelo para poder enfrentrarlo")                    
+                os.system("pause")
     elif(opcion == 3):
         os.system("cls")
         print(tabla)
