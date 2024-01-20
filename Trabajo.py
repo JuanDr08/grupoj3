@@ -31,43 +31,50 @@ while Encendido:
         #
         #
     elif(opcion == 2):
-        os.system("cls")
-        for i, item in enumerate(Equipos): # Disponibilidad
-            print("Equipos disponibles: ", item[0])
-        vsLocal = str(input("Ingrese el equipo que jugara de Local: "))             # Ingreso contrincantes
-        vsVisitante = str(input("Ingrese el equipo que jugara de visitante: "))     # Ingreso contrincantes
-        for i, item in enumerate(Equipos):                           
-            if (vsLocal.upper() in item):                                # verificacion de existencia
-                item[1] += 1                                             # Aumento partidos jugados
-                print("equipo registrado correctamente")
-            elif (vsVisitante.upper() in item):                                # verificacion de existencia
-                item[1] += 1                                             # Aumento partidos jugados
-                print("equipo registrado correctamente")
+        if (len(Equipos) < 2):
+            print("No hay equipos registrados")
+            print("Debe haber registrado al menos dos equipos, porfavor registrelos en la opcion 1")
+            os.system("pause")
+        else:            
+            os.system("cls")
+            for i, item in enumerate(Equipos): # Disponibilidad
+                print("Equipos disponibles: ", item[0])
+            vsLocal = str(input("Ingrese el equipo que jugara de Local: "))             # Ingreso contrincantes
+            vsVisitante = str(input("Ingrese el equipo que jugara de visitante: "))     # Ingreso contrincantes
+            if (vsLocal.upper() == vsVisitante.upper()):
+                print("Registre dos equipos diferentes")
                 os.system("pause")
-        os.system("cls")
-        marcadorLocal = int(input(f"Ingrese el marcador del equipo {vsLocal} "))
-        marcadorVisitante = int(input(f"Ingrese el marcador del equipo {vsVisitante} ")) 
-        for i, item in enumerate(Equipos):                              
-            if ((vsLocal.upper() in item) or (vsVisitante.upper() in item)):
-                if (item[0] == vsLocal.upper()):
-                    item[5] += marcadorLocal
-                    item[6] += marcadorVisitante
-                    if (marcadorLocal > marcadorVisitante):
-                        item[2] += 1
-                        item[7] += 3
-                    elif (marcadorLocal < marcadorVisitante):
-                        item[3] += 1
-                elif (item[0] == vsVisitante.upper()):
-                    item[6] += marcadorLocal
-                    item[5] += marcadorVisitante
-                    if (marcadorLocal < marcadorVisitante):
-                        item[2] += 1
-                        item[7] += 3
-                    elif (marcadorLocal > marcadorVisitante):
-                        item[3] += 1
-                elif (marcadorLocal == marcadorVisitante):
-                    item[4] += 1
-                    item[7] += 1                        
+            else:
+                os.system("cls")
+                marcadorLocal = int(input(f"Ingrese el marcador del equipo {vsLocal}: "))
+                marcadorVisitante = int(input(f"Ingrese el marcador del equipo {vsVisitante}: ")) 
+                if((marcadorLocal >= 0) and  (marcadorVisitante >= 0)):
+                    for i, item in enumerate(Equipos):                              
+                        if ((vsLocal.upper() in item) or (vsVisitante.upper() in item)):
+                            if (item[0] == vsLocal.upper()):
+                                item[1] += 1
+                                item[5] += marcadorLocal
+                                item[6] += marcadorVisitante
+                                if (marcadorLocal > marcadorVisitante):
+                                    item[2] += 1
+                                    item[7] += 3
+                                elif (marcadorLocal < marcadorVisitante):
+                                    item[3] += 1
+                            elif (item[0] == vsVisitante.upper()):
+                                item[1] += 1
+                                item[6] += marcadorLocal
+                                item[5] += marcadorVisitante
+                                if (marcadorLocal < marcadorVisitante):
+                                    item[2] += 1
+                                    item[7] += 3
+                                elif (marcadorLocal > marcadorVisitante):
+                                    item[3] += 1
+                            elif (marcadorLocal == marcadorVisitante):
+                                item[4] += 1
+                                item[7] += 1
+                else:
+                    print("ingrese un valor correcto")
+                    os.system("pause")                       
     elif(opcion == 3):
         os.system("cls")
         print(tabla)
