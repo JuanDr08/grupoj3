@@ -167,7 +167,6 @@ while Encendido:
                     else:
                         print("E. El promedio de goles por partido es: ", totalGoles/totalPartidos )
                         os.system("pause")
-    
     else:
         print("Escoja una opcion valida")
         os.system('pause')
