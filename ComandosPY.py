@@ -32,3 +32,5 @@ for key in alumno:
 for key, valor in alumno.items():
     if ((type(valor) == str) or (type(valor) == int)): # si el tipo de valor de la llave en la que estemos es str o entero entonces lo va a imprimir
         print(f"{key.capitalize()} : {valor}")
+
+# .update() nos permite agregar o modificar informacion en un diccionario

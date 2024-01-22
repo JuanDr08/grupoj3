@@ -55,8 +55,8 @@ while isActive :
                     "codEquipo" : key,
                     "nombre" : valor["nombre"]
                 }
-                federacion.get(key)["estado"] = 1
-                grupos.get(grp).append(equip)
+                federacion.get(key)["estado"] = 1  # el metodo get permite obtener el valor que hay en una llave directamente de esta 
+                grupos.get(grp).append(equip) # por ejemplo en este get se saca el valor de lo que le ingresamos em grp y lo busca en el diccio grupos y le agrega equip
     elif(op == 4):
         isActive = False
 
