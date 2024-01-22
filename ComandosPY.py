@@ -34,3 +34,5 @@ for key, valor in alumno.items():
         print(f"{key.capitalize()} : {valor}")
 
 # .update() nos permite agregar o modificar informacion en un diccionario
+print(alumno.keys()) #forma de acceder solamente a las llaves del diccionario
+print(alumno.get("telefono", "no se encuentra el valor")) # si la llave telefono no existe, nos dira que no se encuentra o lo quye pongamos despues de la ","
