@@ -1,3 +1,5 @@
+# invertir = list(invertir) Me permite convertir una variable que contiene caracteres a una lista y cada caracter en una posicion distinta de la lista
+
 import os
 os.system('cls')
 titulo = """
